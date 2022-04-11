@@ -1,4 +1,4 @@
-![AssinaturaPython-2022]()
+![AssinaturaPython-2022](https://github.com/joaoflorentino/Novo_Mega2022/blob/main/figs/AssinaturaPython-2022-Small.png)
 
 ## Mega
 ✅ Estudo Estatístico do jogo.<br> 
