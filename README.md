@@ -1,3 +1,4 @@
+![AssinaturaPython-2022]()
 
 ## Mega
 ✅ Estudo Estatístico do jogo.<br> 
