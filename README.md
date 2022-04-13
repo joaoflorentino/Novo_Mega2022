@@ -1,4 +1,3 @@
-<body bgcolor= #edf0ee>
 
 ![AssinaturaPython-2022](https://github.com/joaoflorentino/Novo_Mega2022/blob/main/figs/AssinaturaPython-2022-Small.png)
 
@@ -7,7 +6,7 @@
 ✅ Este estudo será implementado em Python com arquivo .py
 
 ***
-⏳ <font color = #ed5d09>>Status  </font>- <u> Em andamento</u> <i> <b> (incompleto) </i> </b>
+⏳ <font color = #ed5d09>Status  </font>- <u> Em andamento </u> <i> <b> (incompleto) </i> </b>
 
 ***
 
@@ -27,6 +26,4 @@ numeros com sorteios desde o inicio dos jogos; </font>
 os mais sorteados dos jogos que não apresentaram vencedores dos 06 <br>
 números;
 - Criar uma GUI com Tkinter para interagir com esses recursos e ainda <br> fazer uma GUI com proposta de aposta. 
-
-</body>
 
