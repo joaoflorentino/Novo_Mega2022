@@ -66,6 +66,6 @@ if __name__ == '__main__':
     dezenas = df0.criaListaSorteio()
     print(dezenas)
     print(f'Salvando arquivos para outros estudos subsequentes:')
-    df0.criaArquivosDeEstudos()
+    #df0.criaArquivosDeEstudos()
 
 
