@@ -19,14 +19,16 @@ Matplotlib.
 # Imports 
 
 from tkinter import *
-import  pyglet,  os
+import tkinter.font  as tkF
+
 # Importação para colocar o grafico dentro da janela do tkinter
 from matplotlib import pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
 
 ## FONTES TTF
-pyglet.font.add_file('figs/dc_s.ttf')
+
+
 
 ##  GUI  
 class Telatk():
@@ -58,6 +60,7 @@ class Telatk():
         self.janela.resizable(True, True)  # Permite a janela ser aumentada ou diminuida tanto em x quanto em  y
         self.janela.maxsize(width=1200, height=700)  # Define o tamanho maximo da tela se acima for True
         self.janela.minsize(width= 950, height= 450) # Define o tamanho minimo da tela se acima for True
+        self.fontSt1 = tkF.Font(family='figs/dc_s.ttf', size=15)
 
     def framesScreem (self):
         '''Função que define o tamnho e a posição dos frames'''
@@ -125,7 +128,7 @@ class Telatk():
 
     def janelaUsuario(self):
 
-        lb01 = Label(self.frame5, text='Programa Mega Sena', font=('dc_s',12), bg=self.c2)
+        lb01 = Label(self.frame5, text='Programa Mega Sena', font=('nimbus sans l', 12), bg=self.c2)
         lb01.place(relx=0.35, rely=0.05)
 
 
