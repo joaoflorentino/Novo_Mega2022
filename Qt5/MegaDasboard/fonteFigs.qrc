@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/fonteFigs">
+        <file alias="logo">fig/logo1</file>
+    </qresource>
+</RCC>

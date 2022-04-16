@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/fonteFig">
+        <file alias="logo1">AssinaturaPython-2022-Small.png</file>
+        <file alias="cruz">CruzTemplariaSmall-2.png</file>
+    </qresource>
+</RCC>
