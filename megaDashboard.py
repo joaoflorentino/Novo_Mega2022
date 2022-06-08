@@ -56,9 +56,9 @@ class Telatk():
         # self.janela.iconbitmap( caminho)
         self.janela.title('JF - DashBoard Mega Sena - Brasil  / 2022')
         self.janela.configure(bg=self.c1)
-        self.janela.geometry('1000x500')
+        self.janela.geometry('1500x950')
         self.janela.resizable(True, True)  # Permite a janela ser aumentada ou diminuida tanto em x quanto em  y
-        self.janela.maxsize(width=1200, height=700)  # Define o tamanho maximo da tela se acima for True
+        self.janela.maxsize(width=20000, height=1000)  # Define o tamanho maximo da tela se acima for True
         self.janela.minsize(width= 950, height= 450) # Define o tamanho minimo da tela se acima for True
         self.fontSt1 = tkF.Font(family='figs/dc_s.ttf', size=15)
 
