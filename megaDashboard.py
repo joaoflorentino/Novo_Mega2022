@@ -36,9 +36,11 @@ class Telatk():
         '''Classe que gera a GUI onde o usuário entra os dados do grafico
         visualisa o grafico e com botoes interage com o resultado'''
         ### CORES =====
-        self.c1 = '#3acf96'  #Cor do fundo de tela geral
-        self.c2 = '#d2eb98' #Cor de fundo do  Frame
-        self.c3 = '#0c4006' #Cor da borda do Frame
+        self.c1 = '#0e1c8a'  #Cor do fundo de tela geral
+        self.c2 = '#0a0e2e' #Cor de fundo do  Frame
+        self.c3 = '#182480' #Cor da borda do Frame
+        self.c4 ='#717ff5'  #Cor do fundo de imagem
+        self.c5 ='#f5f5f7'  #Cor dos textos
         # Demais funcoes de tela
         self.janela = Tk()
         self.telaScreem()
@@ -56,10 +58,10 @@ class Telatk():
         # self.janela.iconbitmap( caminho)
         self.janela.title('JF - DashBoard Mega Sena - Brasil  / 2022')
         self.janela.configure(bg=self.c1)
-        self.janela.geometry('1500x950')
+        self.janela.geometry('1800x950')
         self.janela.resizable(True, True)  # Permite a janela ser aumentada ou diminuida tanto em x quanto em  y
-        self.janela.maxsize(width=20000, height=1000)  # Define o tamanho maximo da tela se acima for True
-        self.janela.minsize(width= 950, height= 450) # Define o tamanho minimo da tela se acima for True
+        self.janela.maxsize(width=2000, height=1000)  # Define o tamanho maximo da tela se acima for True
+        self.janela.minsize(width= 1000, height= 500) # Define o tamanho minimo da tela se acima for True
         self.fontSt1 = tkF.Font(family='figs/dc_s.ttf', size=15)
 
     def framesScreem (self):
@@ -123,12 +125,12 @@ class Telatk():
     def poeLogo(self):
         self.cami1 = 'figs/AssinaturaPython-2022-Small.png'
         self.logo1 = PhotoImage(file=self.cami1)
-        self.labLogo1 = Label(self.frame5, image=self.logo1,bg=self.c2)
+        self.labLogo1 = Label(self.frame5, image=self.logo1,bg=self.c4)
         self.labLogo1.place(relx=0.04, rely=0.01)
 
     def janelaUsuario(self):
 
-        lb01 = Label(self.frame5, text='Programa Mega Sena', font=('nimbus sans l', 12), bg=self.c2)
+        lb01 = Label(self.frame5, text='Programa Mega Sena', font=('nimbus sans l', 12), fg=self.c5, bg=self.c2)
         lb01.place(relx=0.35, rely=0.05)
 
 

@@ -18,19 +18,18 @@ Com os dados dos sorteios desde o inicio do jogo até (por hora) Abril de
 
 import numpy as np
 import pandas as pd
-import seaborn as sns
 from matplotlib import pyplot as plt
 from datetime import datetime
 from IPython.core.display import HTML
 
 ## Classes 
 
-class PuxaCVS:
+class PuxaCSV:
     def __init__(self) -> None:
         self.caminho = 'data/mega.csv'
         
 
-    def buscarCvs(self):
+    def buscarCsv(self):
         '''Funcao de busca de arquivo csv contendo sorteios
         da megasena '''
         self.dataFrame = pd.read_csv(self.caminho, index_col='Conc.')
@@ -58,8 +57,8 @@ class PuxaCVS:
 
 if __name__ == '__main__':
 
-    df0 = PuxaCVS()
-    cabec = df0.buscarCvs()
+    df0 = PuxaCSV()
+    cabec = df0.buscarCsv()
     print(cabec)
     inverte = df0.faxinaData()
     print(inverte)
