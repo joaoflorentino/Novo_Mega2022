@@ -36,7 +36,7 @@ class Telatk():
         '''Classe que gera a GUI onde o usuário entra os dados do grafico
         visualisa o grafico e com botoes interage com o resultado'''
         ### CORES =====
-        self.c1 = '#0e1c8a'  #Cor do fundo de tela geral
+        self.c1 = '#0d2754'  #Cor do fundo de tela geral
         self.c2 = '#0a0e2e' #Cor de fundo do  Frame
         self.c3 = '#182480' #Cor da borda do Frame
         self.c4 ='#717ff5'  #Cor do fundo de imagem
@@ -58,9 +58,9 @@ class Telatk():
         # self.janela.iconbitmap( caminho)
         self.janela.title('JF - DashBoard Mega Sena - Brasil  / 2022')
         self.janela.configure(bg=self.c1)
-        self.janela.geometry('1800x950')
+        self.janela.geometry('1650x900')
         self.janela.resizable(True, True)  # Permite a janela ser aumentada ou diminuida tanto em x quanto em  y
-        self.janela.maxsize(width=2000, height=1000)  # Define o tamanho maximo da tela se acima for True
+        self.janela.maxsize(width=1900, height=950)  # Define o tamanho maximo da tela se acima for True
         self.janela.minsize(width= 1000, height= 500) # Define o tamanho minimo da tela se acima for True
         self.fontSt1 = tkF.Font(family='figs/dc_s.ttf', size=15)
 
