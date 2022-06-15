@@ -1,8 +1,0 @@
-1) Entrar no site da Caixa e acessar pagina HTML com planilha de todos os resultados da MegaSena
-
-2) Salvar o arquivo HTML 
-
-3) Na planilha do google abrir nova planilha e escolher a opção de importar (em arquivo) e importar o arquivo HTML salvo.
-
-4) limpar os dados em exesso e salvar planilha.
-

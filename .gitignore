@@ -5,3 +5,5 @@ BaseConhecimento
 # Para ignorar todos os arquivos e sub-pastas da pasta BaseConhecimento/
 BaseConhecimento/
 
+# Ignorar a pasta base
+base/

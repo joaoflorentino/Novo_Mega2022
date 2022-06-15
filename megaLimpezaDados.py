@@ -1,6 +1,6 @@
 # *-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 # Limpeza inicial dos dados de sorteio planinha
-# de jogos  .csv  com sorteios ate abril 2022 
+# de jogos  .csv  com sorteios ate junho 2022 
 # João Florentino  -  Python 2022
 #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
@@ -11,6 +11,10 @@ um prémio a partir de 04 acertos até o prémio total com 06 acertos.
 
 Com os dados dos sorteios desde o inicio do jogo até (por hora) Abril de 
 2022 vou fazer algumas abordagens sobre os resultados dos sorteios. 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+baseCSV - cria dataframes Pandas para uso das demais classes do 
+programa
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 '''
 
@@ -25,6 +29,9 @@ from IPython.core.display import HTML
 ## Classes 
 
 class PuxaCSV:
+    '''Classe que retorna DataFrames Pandas organizados para uso das 
+    demais classes do programa '''
+
     def __init__(self) -> None:
         self.caminho = 'data/mega.csv'
         
@@ -32,19 +39,32 @@ class PuxaCSV:
     def buscarCsv(self):
         '''Funcao de busca de arquivo csv contendo sorteios
         da megasena '''
-        self.dataFrame = pd.read_csv(self.caminho, index_col='Conc.')
-        return self.dataFrame.head(5)
+        self.dataFrame = pd.read_csv(self.caminho, index_col='Concurso')
+        return self.dataFrame
 
-    def faxinaData(self):
+    ### Frame 01 
+    def frameUm(self,df0):
+        '''Cria Primeiro Data frame com numero de sorteio e 
+        dezenas sorteadas em ordem crescente'''
+        df1= df0.iloc[:, [1,2,3,4,5,6]] #Comando para separar as colunas que necessito inicialmente no estudo
+        return df1
+    
+    ### Frame 02
+
+
+
+
+    def faxinaData(self,df0):
         '''Funçao cria novo dataframe com elininação dos dados
         NdN contidos no frame inicial '''
-        self.df1 = self.dataFrame.sort_values(['Conc.'], ascending=True)
-        self.df1.fillna(value=0,  inplace=True)
-        return self.df1.head(8)
+        self.dataFrame = df0
+        self.df = self.dataFrame.sort_values(['Concurso'], ascending=True)
+        self.df.fillna(value='',  inplace=True)
+        return self.df
 
     def criaListaSorteio(self):
         '''Funcao que elimina algumas colunas deixando as dezenas sorteadas
-       e o numero do concurso '''
+        e o numero do concurso '''
         self.sort = []
         self.df2 = self.df1.drop(['Data', 'Ganhador', 'premio'], axis=1) 
         return self.df2
@@ -56,15 +76,34 @@ class PuxaCSV:
         return
 
 if __name__ == '__main__':
-
+    print(f'_+_+_+_+_+_+_+_   Inicio deste TESTE =-=-=-=-=-=-=-=-=-=-=-=')
     df0 = PuxaCSV()
     cabec = df0.buscarCsv()
     print(cabec)
+    print(cabec.isnull().sum())
+    limpoNaN = df0.faxinaData(cabec) ## Limpa todo DataFrame de NaN
+    print(limpoNaN.isnull().sum()) ## mostra limpeza do DataFrame
+
+    
+    print()
+    print('Analise dataFraem 01 informações do Pandas')
+    primeiro = df0.frameUm(limpoNaN)
+    print(primeiro)
+    primeiro.info()
+    #primeiro.tail(10)
+    print(primeiro.isnull().sum()) # Informa se há valores nulos nas colunas e soma em cada coluna quantos são
+    print(f'*-*-*-*-*-*-*-*-*-Fim das Informações do pandas Data Frame 01*-*-*-*-*-*-*-*-*-*-*')
+    print()
+    
+    """    
     inverte = df0.faxinaData()
     print(inverte)
     dezenas = df0.criaListaSorteio()
     print(dezenas)
     print(f'Salvando arquivos para outros estudos subsequentes:')
     #df0.criaArquivosDeEstudos()
+    
+    """
+    
 
 
