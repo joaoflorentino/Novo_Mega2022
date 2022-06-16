@@ -7,3 +7,9 @@ BaseConhecimento/
 
 # Ignorar a pasta base
 base/
+
+# Ignorar a pasta figs
+figs/
+
+# Ignorar a pasta Qt5
+Qt5/

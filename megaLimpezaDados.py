@@ -40,14 +40,16 @@ class PuxaCSV:
         '''Funcao de busca de arquivo csv contendo sorteios
         da megasena '''
         self.dataFrame = pd.read_csv(self.caminho, index_col='Concurso')
-        return self.dataFrame
+        self.df0 = self.faxinaData(self.dataFrame)
+        return self.df0
 
     ### Frame 01 
-    def frameUm(self,df0):
+    def frameUm(self,dfm):
         '''Cria Primeiro Data frame com numero de sorteio e 
         dezenas sorteadas em ordem crescente'''
-        df1= df0.iloc[:, [1,2,3,4,5,6]] #Comando para separar as colunas que necessito inicialmente no estudo
-        return df1
+        df1 = dfm.iloc[:, [1,2,3,4,5,6]] #Comando para separar as colunas que necessito inicialmente no estudo
+        df2 = self.faxinaData(df1)
+        return df2
     
     ### Frame 02
 
@@ -59,7 +61,7 @@ class PuxaCSV:
         NdN contidos no frame inicial '''
         self.dataFrame = df0
         self.df = self.dataFrame.sort_values(['Concurso'], ascending=True)
-        self.df.fillna(value='',  inplace=True)
+        self.df.fillna(value='',  inplace=True)  #Retira todos NaN do dataframe
         return self.df
 
     def criaListaSorteio(self):
@@ -75,25 +77,34 @@ class PuxaCSV:
 
         return
 
+
+#####  MAIN  - Testes ######
 if __name__ == '__main__':
     print(f'_+_+_+_+_+_+_+_   Inicio deste TESTE =-=-=-=-=-=-=-=-=-=-=-=')
     df0 = PuxaCSV()
     cabec = df0.buscarCsv()
+    cabec.info()
     print(cabec)
     print(cabec.isnull().sum())
     limpoNaN = df0.faxinaData(cabec) ## Limpa todo DataFrame de NaN
-    print(limpoNaN.isnull().sum()) ## mostra limpeza do DataFrame
+    print(limpoNaN) ## mostra limpeza do DataFrame
 
     
     print()
     print('Analise dataFraem 01 informações do Pandas')
     primeiro = df0.frameUm(limpoNaN)
-    print(primeiro)
+    #print(primeiro)
     primeiro.info()
     #primeiro.tail(10)
-    print(primeiro.isnull().sum()) # Informa se há valores nulos nas colunas e soma em cada coluna quantos são
+    #print(primeiro.isnull().sum()) # Informa se há valores nulos nas colunas e soma em cada coluna quantos são
+
+    print(primeiro.describe()) ## Descreve estatisticamente os valores dos sorteios das dezenas 
+    k = primeiro['dezena1'].describe() ## valores estatisticos da primeira dezena
+    print(f'{k}')
     print(f'*-*-*-*-*-*-*-*-*-Fim das Informações do pandas Data Frame 01*-*-*-*-*-*-*-*-*-*-*')
     print()
+    
+
     
     """    
     inverte = df0.faxinaData()
