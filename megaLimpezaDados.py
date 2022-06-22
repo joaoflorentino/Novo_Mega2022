@@ -43,7 +43,7 @@ class PuxaCSV:
         self.df0 = self.faxinaData(self.dataFrame)
         return self.df0
 
-    ### Frame 01 
+    ###DataFrame 01 
     def frameUm(self,dfm):
         '''Cria Primeiro Data frame com numero de sorteio e 
         dezenas sorteadas em ordem crescente'''
@@ -51,7 +51,7 @@ class PuxaCSV:
         df2 = self.faxinaData(df1)
         return df2
     
-    ### Frame 02
+    ### DataFrame 02
 
 
 
@@ -67,7 +67,6 @@ class PuxaCSV:
     def criaListaSorteio(self):
         '''Funcao que elimina algumas colunas deixando as dezenas sorteadas
         e o numero do concurso '''
-        self.sort = []
         self.df2 = self.df1.drop(['Data', 'Ganhador', 'premio'], axis=1) 
         return self.df2
 

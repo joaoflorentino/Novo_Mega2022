@@ -25,6 +25,8 @@ import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 from datetime import datetime
+import seaborn as sns
+# > Meus arquivos
 import megaLimpezaDados
 
 ##  CLASSES     
@@ -52,15 +54,51 @@ class Estatistica():
         df1 = self.df0.loc[self.df0['Mega'] == 0]
         dfPerds = megaLimpezaDados.PuxaCSV().frameUm(df1)
         return dfPerds
-        
     
+    def FreqNumSorteados(self,dtfm):
+        '''Funcao que determina a frequencia de numeros 
+        vencedores no dataFrame'''
+        self.dfava = dtfm
+        TotalDasDezenas = self.dfava.apply(pd.Series.value_counts)
+        TotalDasDezenas.fillna(value=0,  inplace=True) 
+        dfresult = TotalDasDezenas
+        dfresult["Frequencia"] = dfresult[list(dfresult.columns)].sum(axis=1) 
+        #dfresult.sort_values(['Frequencia'], ascending=True)
+        freq = dfresult[['Frequencia']]
+        return freq
 
+    def nMaiores(self,dfm,n):
+        '''Funcção que determinas os n Maiores valores da 
+        frequencia de sorteio'''
+        self.dataFamePand = dfm
+        self.nval = n
+        Maiores = self.dataFamePand.nlargest(self.nval, ['Frequencia'])
+        return (Maiores)
 
+    def nMenores(self,dfm,n):
+        '''Funcção que determinas os n Menores valores da 
+        frequencia de sorteio'''
+        self.dataFamePand = dfm
+        self.nval = n
+        Menores = self.dataFamePand.nsmallest(self.nval, ['Frequencia'])
+        return (Menores)
 
 
 
 class Graficos():
-    pass
+    ''' Classe responsável por gerar os graficos para os 
+    dash boards'''
+    def __init__(self) -> None:
+        pass
+
+    def histogramaMega(self, dfm):
+        self.dfGraf = dfm
+        num = len(self.dfGraf.index)
+        fig, ax = plt.subplots(figsize=(20,15))
+        sns.barplot(  x = self.dfGraf.index, y= "Frequencia", palette="rocket", data=self.dfGraf)
+        ax.set_title('Frequencia dos Numeros Sorteados ', fontsize=20)
+        ax.yaxis.set_label_text('Frequencia ', fontdict={'size':14})
+        plt.show()
 
 
 
@@ -70,14 +108,39 @@ if  __name__ == '__main__':
     teste1 = Estatistica()
     ganhadores = teste1.dataframeVencedores()
     print(ganhadores)
-    perdedores = teste1.dataframePerdedores()
-    print(perdedores)
 
+    #valores1 = ganhadores.value_counts(ganhadores["dezena1"])
+    #print(valores1)
+    freq = teste1.FreqNumSorteados(ganhadores)
+    freq.sort_values(['Frequencia'], ascending=True)
+    print(freq)
+    print()
+    est_freq = teste1.estatisticoData(freq)
+    print(est_freq)
+
+    Max = teste1.nMaiores(freq,10)
+    print()
+    print(Max)
+
+    Min = teste1.nMenores(freq,10)
+    print()
+    print(Min)
+
+    graf1 = Graficos()
+    graf1.histogramaMega(Max)
+    #perdedores = teste1.dataframePerdedores()
+    #print(perdedores)
+
+   
+   
+'''
     est_venc = teste1.estatisticoData(ganhadores)
     print (est_venc)
     print()
 
     est_perd = teste1.estatisticoData(perdedores)
     print(est_perd)
-    print(f'======== F I M  dos TESTES =============')
-    print()
+    
+'''
+print(f'======== F I M  dos TESTES =============')
+print()
