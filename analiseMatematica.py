@@ -26,6 +26,7 @@ import pandas as pd
 from matplotlib import pyplot as plt
 from datetime import datetime
 import seaborn as sns
+from sklearn.neighbors import KernelDensity
 # > Meus arquivos
 import megaLimpezaDados
 
@@ -63,7 +64,7 @@ class Estatistica():
         TotalDasDezenas.fillna(value=0,  inplace=True) 
         dfresult = TotalDasDezenas
         dfresult["Frequencia"] = dfresult[list(dfresult.columns)].sum(axis=1) 
-        #dfresult.sort_values(['Frequencia'], ascending=True)
+        
         freq = dfresult[['Frequencia']]
         return freq
 
@@ -91,13 +92,22 @@ class Graficos():
     def __init__(self) -> None:
         pass
 
-    def histogramaMega(self, dfm):
+    def barrasMega(self, dfm):
+        '''Função que cria grafico de barras Seaborn '''
         self.dfGraf = dfm
-        num = len(self.dfGraf.index)
-        fig, ax = plt.subplots(figsize=(20,15))
-        sns.barplot(  x = self.dfGraf.index, y= "Frequencia", palette="rocket", data=self.dfGraf)
+        fig, ax = plt.subplots(figsize=(12,7))
+        ## Abaixo cria-se um grafico de barras seaborn ordenando os numeros dos menos sorteados para os mais 
+        sns.barplot(  x = self.dfGraf.index, y= "Frequencia", palette="icefire", data=self.dfGraf, order=self.dfGraf.sort_values('Frequencia').index)
         ax.set_title('Frequencia dos Numeros Sorteados ', fontsize=20)
         ax.yaxis.set_label_text('Frequencia ', fontdict={'size':14})
+        plt.tight_layout()
+        plt.show()
+
+    def histogramaMega(self,dtf):
+        '''Função que gera um histograma de um dataFrame'''
+        self.dataFrame = dtf
+        ## Abaixo cria-se um histograma com curva normal seaborn com a frequencia dos numeros sorteados
+        sns.displot(self.dataFrame, x='Frequencia', kde=True ).set(title='Frequencia dos sorteios')
         plt.show()
 
 
@@ -112,13 +122,12 @@ if  __name__ == '__main__':
     #valores1 = ganhadores.value_counts(ganhadores["dezena1"])
     #print(valores1)
     freq = teste1.FreqNumSorteados(ganhadores)
-    freq.sort_values(['Frequencia'], ascending=True)
     print(freq)
     print()
     est_freq = teste1.estatisticoData(freq)
     print(est_freq)
 
-    Max = teste1.nMaiores(freq,10)
+    Max = teste1.nMaiores(freq,60)
     print()
     print(Max)
 
@@ -127,7 +136,12 @@ if  __name__ == '__main__':
     print(Min)
 
     graf1 = Graficos()
+    graf1.barrasMega(Max)
+    info = teste1.estatisticoData(Max)
+    print(info)
+    #graf1.curvaNormal(Max)
     graf1.histogramaMega(Max)
+    
     #perdedores = teste1.dataframePerdedores()
     #print(perdedores)
 

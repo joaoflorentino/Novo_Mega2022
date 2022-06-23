@@ -24,7 +24,7 @@ import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 from datetime import datetime
-from IPython.core.display import HTML
+
 
 ## Classes 
 
