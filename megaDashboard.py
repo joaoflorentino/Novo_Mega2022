@@ -20,6 +20,7 @@ Matplotlib.
 
 from tkinter import *
 import tkinter.font  as tkF
+from PIL import ImageTk,Image
 
 # Importação para colocar o grafico dentro da janela do tkinter
 from matplotlib import pyplot as plt
@@ -133,7 +134,12 @@ class Telatk():
         lb01 = Label(self.frame5, text='Programa Mega Sena', font=('nimbus sans l', 12), fg=self.c5, bg=self.c2)
         lb01.place(relx=0.35, rely=0.05)
 
-
+class TelaTKmain:
+    '''Classe da Tela Inicial do Programa Orientando 
+    para as definições e parametros usados 
+    para conclusões e analises deste programa'''
+    def __init__(self) -> None:
+        pass
 
 if __name__ == '__main__':
 
