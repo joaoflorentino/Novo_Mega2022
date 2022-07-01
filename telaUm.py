@@ -20,9 +20,13 @@ Matplotlib.
 
 from tkinter import *
 import tkinter.font  as tkF
-from PIL import ImageTk,Image
+import numpy as np
+import pandas as pd
+from datetime import datetime
+import seaborn as sns
 
 #import Meus Arquivos
+import analiseMatematica
 
 # Importação para colocar o grafico dentro da janela do tkinter
 from matplotlib import pyplot as plt
@@ -86,14 +90,15 @@ class  Primeira():
 
         ### Conteudo dos Frames ###
     def screemGrafico(self):
-        '''Função que posiciona o grafico dentro do frame1'''
+        '''Função que posiciona o grafico dentro dos frames'''
         # Grafico FRAME 1
         self.grafo1 = plt.figure(figsize=(5,5),  dpi=100)
         self.canvasG1 = FigureCanvasTkAgg(self.grafo1, master=self.frame1)
-        self.figrafico =  self.grafo1.add_subplot(111)
+        self.figraficoA =  self.grafo1.add_subplot(111)
         self.canvasG1.get_tk_widget().place(relx=0.01, rely=0.01, relwidth=0.98, relheight=0.97)
-        #self.toobar = NavigationToolbar2Tk(self.canvasG1, self.frame1)
+        self.toobar = NavigationToolbar2Tk(self.canvasG1, self.frame1)
         self.canvasG1._tkcanvas.place(relx=0.00, rely=0.00, relwidth=0.98, relheight=0.97)
+        self.estGanhaVence()
 
         # Grafico FRAME 2
         self.grafo2 = plt.figure(figsize=(5,5),  dpi=100)
@@ -129,5 +134,28 @@ class  Primeira():
 
     def janelaUsuario(self):
 
-        lb01 = Label(self.frame5, text='Programa Mega Sena', font=('nimbus sans l', 12), fg=self.c5, bg=self.c2)
+        lb01 = Label(self.frame5, text='Informações  dos Graficos', font=('nimbus sans l', 12), fg=self.c5, bg=self.c2)
         lb01.place(relx=0.35, rely=0.05)
+        
+
+        ### Funções De Análise Estatística  #####
+
+    def  estGanhaVence(self):
+        a = analiseMatematica.Estatistica()
+        ganhadores = a.dataframeVencedores()
+        freq = a.FreqNumSorteados(ganhadores)
+        freq.sort_values(['Frequencia'], ascending=True)
+        est_freq = a.estatisticoData(freq)
+        Max = a.nMaiores(freq,20) ##  Esse valor de 20 é que define o tamanho da amostra 
+        Min = a.nMenores(freq,20) ## mesmo acima
+        # Gera Grafico mais sorteados 
+        graf1 = analiseMatematica.Graficos()
+        self.A = graf1.barrasMega(Max)
+        self.figraficoA = self.A
+        self.canvasG1.draw()
+
+        self.B = graf1.histogramaMega(Max)
+        # Gera Grafico menos sorteados
+        self.C = graf1.barrasMega(Min)
+        self.D =graf1.histogramaMega(Min)
+
