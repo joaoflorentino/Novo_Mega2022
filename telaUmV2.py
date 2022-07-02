@@ -24,6 +24,7 @@ import numpy as np
 import pandas as pd
 from datetime import datetime
 import seaborn as sns
+from PIL  import Image
 
 #import Meus Arquivos
 import analiseMatematica
@@ -92,12 +93,26 @@ class  Primeira():
     def screemGrafico(self):
         '''Função que posiciona o grafico dentro dos frames'''
         # Grafico FRAME 1
-        self.grafo1 = plt.figure(figsize=(5,5),  dpi=100)
-        self.canvasG1 = FigureCanvasTkAgg(self.grafo1, master=self.frame1)
-        self.figraficoA =  self.grafo1.add_subplot(111)
-        self.canvasG1.get_tk_widget().place(relx=0.01, rely=0.01, relwidth=0.98, relheight=0.97)
-        self.toobar = NavigationToolbar2Tk(self.canvasG1, self.frame1)
-        self.canvasG1._tkcanvas.place(relx=0.00, rely=0.00, relwidth=0.98, relheight=0.97)
+        graf1 = analiseMatematica.Graficos()
+        a = self.estGanhaVence()
+        ima = graf1.barrasMega(a)
+        iume = Image.open('bar1.png')
+        wi = iume.width //  3
+        h = iume.height //  3
+        res = iume.resize((wi,h))
+        res.save('new.png')
+
+        w = Canvas(self.janela)
+        gra01= PhotoImage(file= 'new.png')
+        w.create_image(0,0, image=gra01)
+        w.image = gra01
+
+        grafico = Label(self.frame1, image=w.image)
+        grafico.place(relx=0.00, rely=0.00, relwidth=0.98, relheight=0.97)
+    
+        print(a)
+        #Gera Grafico mais sorteados 
+        
 
         # Grafico FRAME 2
         self.grafo2 = plt.figure(figsize=(5,5),  dpi=100)
@@ -145,10 +160,11 @@ class  Primeira():
         freq = a.FreqNumSorteados(ganhadores)
         freq.sort_values(['Frequencia'], ascending=True)
         est_freq = a.estatisticoData(freq)
-        Max = a.nMaiores(freq,20) ##  Esse valor de 20 é que define o tamanho da amostra 
+        self.Max = a.nMaiores(freq,10) ##  Esse valor de 20 é que define o tamanho da amostra 
         Min = a.nMenores(freq,20) ## mesmo acima
-        # Gera Grafico mais sorteados 
-        graf1 = analiseMatematica.Graficos()
+        return (self.Max)
+
+        '''  graf1 = analiseMatematica.Graficos()
         self.A = graf1.barrasMega(Max)
         self.figraficoA = self.A
         self.canvasG1.draw()
@@ -156,5 +172,11 @@ class  Primeira():
         self.B = graf1.histogramaMega(Max)
         # Gera Grafico menos sorteados
         self.C = graf1.barrasMega(Min)
-        self.D =graf1.histogramaMega(Min)
+        self.D =graf1.histogramaMega(Min)'''
 
+if __name__ == '__main__':
+    df = Primeira()
+    '''data = df.estGanhaVence()
+    print (data)'''
+    df.screemGrafico()
+    plt.show()

@@ -21,7 +21,7 @@ import tkinter.font  as tkF
 
 from matplotlib.figure import Figure
 # Imports  Meus Arquivos
-import telaUm
+import telaUmV2
 
 master = Tk() 
 master.geometry("1000x500") 
@@ -38,7 +38,7 @@ w = Canvas(master)
 
 
 def janela1():
-    telaUm.Primeira()
+    telaUmV2.Primeira()
     return
 
 def framesScreem ():

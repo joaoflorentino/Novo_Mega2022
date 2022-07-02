@@ -101,6 +101,8 @@ class Graficos():
         ax.yaxis.set_label_text('Frequencia ', fontdict={'size':14})
         plt.tight_layout()
         #plt.show()
+        plt.savefig('bar1.png')
+        return ('bar1.png')
     
     def histogramaMega(self,dtf):
         '''Função que gera um histograma de um dataFrame'''
@@ -136,10 +138,10 @@ if  __name__ == '__main__':
     graf1 = Graficos()
     graf1.barrasMega(Max)
     graf1.histogramaMega(Max)
-
+    plt.show()
     
     
     #perdedores = teste1.dataframePerdedores()
     #print(perdedores)
-print(f'======== F I M  dos TESTES =============')
-print()
+    print(f'======== F I M  dos TESTES =============')
+    print()
