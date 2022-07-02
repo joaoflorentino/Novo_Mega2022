@@ -91,25 +91,38 @@ class Graficos():
     def __init__(self) -> None:
         pass
 
-    def barrasMega(self, dfm):
+    def barrasMega(self, dfm,tituloGra):
         '''Função que cria grafico de barras Seaborn '''
         self.dfGraf = dfm
-        fig, ax = plt.subplots(figsize=(12,7))
+        self.tit = tituloGra # Titulo do grafico vem da chamada da função
         ## Abaixo cria-se um grafico de barras seaborn ordenando os numeros dos menos sorteados para os mais 
+        sns.set_context("notebook", font_scale=1.8)  ## Define o contexto do seaborn para melhorar a visualização
+        fig, ax = plt.subplots(figsize=(12,10))## Gera o tamanho da imagem do grafico
         sns.barplot(  x = self.dfGraf.index, y= "Frequencia", palette="icefire", data=self.dfGraf, order=self.dfGraf.sort_values('Frequencia').index)
-        ax.set_title('Frequencia dos Numeros Sorteados ', fontsize=20)
-        ax.yaxis.set_label_text('Frequencia ', fontdict={'size':14})
+        ax.set_title(self.tit, fontsize=20)
+        ax.set_xlabel('Numeros Sorteados', fontsize = 20)
+        ax.yaxis.set_label_text('Frequencia ', fontdict={'size':18})
         plt.tight_layout()
         #plt.show()
-        plt.savefig('bar1.png')
-        return ('bar1.png')
+        fi = plt.savefig('graficos/bar1.png')
+        return (fi)
     
-    def histogramaMega(self,dtf):
+    def histogramaMega(self,dtf, tituloGr):
         '''Função que gera um histograma de um dataFrame'''
-        self.dataFrame = dtf
+        self.dataFrame = dtf # Carrega o dataframe
+        self.titu = tituloGr # Titulo do grafico vem da chamada da função
         ## Abaixo cria-se um histograma com curva normal seaborn com a frequencia dos numeros sorteados
-        sns.displot(self.dataFrame, x='Frequencia', kde=True ).set(title='Frequencia dos sorteios')
+        sns.set_context("notebook", font_scale=1.8) ## Define o contexto do seaborn para melhorar a visualização
+        fig, ax = plt.subplots(figsize=(12,10)) ## Gera o tamanho da imagem do grafico
+        sns.histplot(self.dataFrame, x='Frequencia', kde=True, ax=ax ) ## KDE gera a curva normal no histograma
+        ax.set_xlabel('Frequencia dos numeros', fontsize = 20)
+        ax.set_title(self.titu, fontsize=20) 
+        ax.yaxis.set_label_text('Probabilidade ', fontdict={'size':18})
+        plt.tight_layout()
+
         #plt.show()
+        fih = plt.savefig("graficos/histog01.png")
+        return (fih)
 
 #####  MAIN  - Testes ######
 if  __name__ == '__main__':

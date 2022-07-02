@@ -94,51 +94,75 @@ class  Primeira():
         '''Função que posiciona o grafico dentro dos frames'''
         # Grafico FRAME 1
         graf1 = analiseMatematica.Graficos()
-        a = self.estGanhaVence()
-        ima = graf1.barrasMega(a)
-        iume = Image.open('bar1.png')
-        wi = iume.width //  3
-        h = iume.height //  3
-        res = iume.resize((wi,h))
-        res.save('new.png')
-
-        w = Canvas(self.janela)
-        gra01= PhotoImage(file= 'new.png')
-        w.create_image(0,0, image=gra01)
-        w.image = gra01
-
-        grafico = Label(self.frame1, image=w.image)
-        grafico.place(relx=0.00, rely=0.00, relwidth=0.98, relheight=0.97)
-    
-        print(a)
-        #Gera Grafico mais sorteados 
-        
+        a, b = self.estGanhaVence()   # Inicia a função estatistica que cria dataframe
+        titulo = str(f'Frequencia dos Numeros Mais Sorteados ')
+        ima = graf1.barrasMega(a, titulo)  #Gera Grafico mais sorteados  e passa titulo
+        iume = Image.open('graficos/bar1.png') #Prepara arquivo pgn para resize
+        wi = iume.width //  3 # Reduz imagem em 3 vezes(Somente numeros inteiros)
+        h = iume.height //  3 # Reduz imagem em 3 vezes(Somente numeros inteiros)
+        res = iume.resize((wi,h)) #Chama a função de redimensionamento
+        res.save('graficos/new.png') # Salva nova imagem no arquivo
+        w = Canvas(self.janela) # Gera imagem no canvas para inserção no frame
+        gra01= PhotoImage(file= 'graficos/new.png') # gera arquivo no Photoimage
+        w.create_image(0,0, image=gra01) # chama imagem no canvas
+        w.image = gra01 # gera o w imagem para inserção no Label
+        grafico = Label(self.frame1, image=w.image) #Label que vai receber imagem acima 
+        grafico.place(relx=0.00, rely=0.00, relwidth=0.98, relheight=0.97) #Posicionamento do Label
 
         # Grafico FRAME 2
-        self.grafo2 = plt.figure(figsize=(5,5),  dpi=100)
-        self.canvasG2 = FigureCanvasTkAgg(self.grafo2, master=self.frame2)
-        self.figrafico =  self.grafo2.add_subplot(111)
-        self.canvasG2.get_tk_widget().place(relx=0.01, rely=0.01, relwidth=0.98, relheight=0.97)
-        #self.toobar = NavigationToolbar2Tk(self.canvasG1, self.frame1)
-        self.canvasG2._tkcanvas.place(relx=0.00, rely=0.00, relwidth=0.98, relheight=0.97)
+        graf2 = analiseMatematica.Graficos()
+        a, b = self.estGanhaVence()   # Inicia a função estatistica que cria dataframe
+        titulo = str(f'Curva Normal dos Numeros Mais Sorteados ')
+        ima = graf2.histogramaMega(a, titulo)  #Gera Grafico mais sorteados  e passa titulo
+        iume = Image.open('graficos/histog01.png') #Prepara arquivo pgn para resize
+        wi = iume.width //  3# Reduz imagem em 3 vezes(Somente numeros inteiros)
+        h = iume.height //  3 # Reduz imagem em 3 vezes(Somente numeros inteiros)
+        res = iume.resize((wi,h)) #Chama a função de redimensionamento
+        res.save('graficos/new2.png') # Salva nova imagem no arquivo
+        w = Canvas(self.janela) # Gera imagem no canvas para inserção no frame
+        gra02= PhotoImage(file= 'graficos/new2.png') # gera arquivo no Photoimage
+        w.create_image(0,0, image=gra02) # chama imagem no canvas
+        w.image = gra02 # gera o w imagem para inserção no Label
+        grafico = Label(self.frame2, image=w.image) #Label que vai receber imagem acima 
+        grafico.place(relx=0.00, rely=0.00, relwidth=0.98, relheight=0.97) #Posicionamento do Label
 
         # Grafico FRAME 3
-        self.grafo3 = plt.figure(figsize=(5,5),  dpi=100)
-        self.canvasG3 = FigureCanvasTkAgg(self.grafo3, master=self.frame3)
-        self.figrafico =  self.grafo3.add_subplot(111)
-        self.canvasG3.get_tk_widget().place(relx=0.01, rely=0.01, relwidth=0.98, relheight=0.97)
-        #self.toobar = NavigationToolbar2Tk(self.canvasG1, self.frame1)
-        self.canvasG3._tkcanvas.place(relx=0.00, rely=0.00, relwidth=0.98, relheight=0.97)
+        graf3 = analiseMatematica.Graficos()
+        a, b = self.estGanhaVence()   # Inicia a função estatistica que cria dataframe
+        titulo = str(f'Frequencia dos Numeros Menos Sorteados ')
+        ima = graf3.barrasMega(b, titulo)  #Gera Grafico mais sorteados  e passa titulo
+        iume = Image.open('graficos/bar1.png') #Prepara arquivo pgn para resize
+        wi = iume.width //  3# Reduz imagem em 3 vezes(Somente numeros inteiros)
+        h = iume.height //  3 # Reduz imagem em 3 vezes(Somente numeros inteiros)
+        res = iume.resize((wi,h)) #Chama a função de redimensionamento
+        res.save('graficos/new3.png') # Salva nova imagem no arquivo
+        w = Canvas(self.janela) # Gera imagem no canvas para inserção no frame
+        gra03= PhotoImage(file= 'graficos/new3.png') # gera arquivo no Photoimage
+        w.create_image(0,0, image=gra03) # chama imagem no canvas
+        w.image = gra03 # gera o w imagem para inserção no Label
+        grafico = Label(self.frame3, image=w.image) #Label que vai receber imagem acima 
+        grafico.place(relx=0.00, rely=0.00, relwidth=0.98, relheight=0.97) #Posicionamento do Label
         
         # Grafico FRAME 4
-        self.grafo4 = plt.figure(figsize=(5,5),  dpi=100)
-        self.canvasG4 = FigureCanvasTkAgg(self.grafo4, master=self.frame4)
-        self.figrafico =  self.grafo4.add_subplot(111)
-        self.canvasG4.get_tk_widget().place(relx=0.01, rely=0.01, relwidth=0.98, relheight=0.97)
-        #self.toobar = NavigationToolbar2Tk(self.canvasG1, self.frame1)
-        self.canvasG4._tkcanvas.place(relx=0.00, rely=0.00, relwidth=0.98, relheight=0.97)
+        graf4 = analiseMatematica.Graficos()
+        a, b = self.estGanhaVence()   # Inicia a função estatistica que cria dataframe
+        titulo = str(f'Curva Normal dos Numeros Menos Sorteados ')
+        ima = graf4.histogramaMega(b, titulo)  #Gera Grafico mais sorteados  e passa titulo
+        iume = Image.open('graficos/histog01.png') #Prepara arquivo pgn para resize
+        wi = iume.width //  3# Reduz imagem em 3 vezes(Somente numeros inteiros)
+        h = iume.height //  3 # Reduz imagem em 3 vezes(Somente numeros inteiros)
+        res = iume.resize((wi,h)) #Chama a função de redimensionamento
+        res.save('graficos/new4.png') # Salva nova imagem no arquivo
+        w = Canvas(self.janela) # Gera imagem no canvas para inserção no frame
+        gra04= PhotoImage(file= 'graficos/new4.png') # gera arquivo no Photoimage
+        w.create_image(0,0, image=gra04) # chama imagem no canvas
+        w.image = gra04 # gera o w imagem para inserção no Label
+        grafico = Label(self.frame4, image=w.image) #Label que vai receber imagem acima 
+        grafico.place(relx=0.00, rely=0.00, relwidth=0.98, relheight=0.97) #Posicionamento do Label
 
     def poeLogo(self):
+        '''Função que insere imagem do logo no frame
+        comentarios dos comandos no frame 1 acima'''
         w = Canvas(self.janela)
         logo1 = PhotoImage(file= r"ima/JFPython.png")
         w.create_image(0,0, image=logo1)
@@ -160,19 +184,11 @@ class  Primeira():
         freq = a.FreqNumSorteados(ganhadores)
         freq.sort_values(['Frequencia'], ascending=True)
         est_freq = a.estatisticoData(freq)
-        self.Max = a.nMaiores(freq,10) ##  Esse valor de 20 é que define o tamanho da amostra 
-        Min = a.nMenores(freq,20) ## mesmo acima
-        return (self.Max)
+        self.Max = a.nMaiores(freq,15) ##  Esse valor de 20 é que define o tamanho da amostra mais sorteados
+        self.Min = a.nMenores(freq,15) ## mesmo acima menos sorteados 
+        return (self.Max, self.Min)
 
-        '''  graf1 = analiseMatematica.Graficos()
-        self.A = graf1.barrasMega(Max)
-        self.figraficoA = self.A
-        self.canvasG1.draw()
-
-        self.B = graf1.histogramaMega(Max)
-        # Gera Grafico menos sorteados
-        self.C = graf1.barrasMega(Min)
-        self.D =graf1.histogramaMega(Min)'''
+### INICIO DO MAIN PARA TESTES DESTE ARQUIVO ######
 
 if __name__ == '__main__':
     df = Primeira()
