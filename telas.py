@@ -49,6 +49,9 @@ class  Primeira():
         self.c3 = '#182480' #Cor da borda do Frame
         self.c4 ='#717ff5'  #Cor do fundo de imagem
         self.c5 ='#f5f5f7'  #Cor dos textos
+        
+
+
         # Demais funcoes de tela
         self.janela = Toplevel()
         self.janela.title('JF - DashBoard Mega Sena - VENCEDORES - Tela 01 ')
@@ -400,8 +403,62 @@ class Terceira():
             self.frame5.place(relx=0.69, rely=0.02, relwidth=0.30, relheight=0.96)
             #O codigo acima define uma area responsiva para o frame 1 e o tamnho responsivo dele 
 
+### Quarta tela
+class Quarta():
+    def __init__(self, res) -> None:
+            
+            self.c1 = '#0d2754'  #Cor do fundo de tela geral
+            self.c2 = '#0a0e2e' #Cor de fundo do  Frame
+            self.c3 = '#182480' #Cor da borda do Frame
+            self.c4 ='#717ff5'  #Cor do fundo de imagem
+            self.c5 ='#f5f5f7'  #Cor dos textos
+            self.c6 = '#eb3175' # Cor para  fundo respostas Rosado 
+            self.c7 = '#f5e35b' # Cor texto resposta Amarelado
 
 
+            # Demais funcoes de tela
+            self.janela = Toplevel()
+            self.janela.title('JF - DashBoard Mega Sena - Nova Aposta Avaliação - Tela 04 ')
+            self.janela.configure(bg=self.c1)
+            self.janela.geometry('1350x750')
+            self.janela.resizable(True, True)  # Permite a janela ser aumentada ou diminuida tanto em x quanto em  y
+            self.janela.maxsize(width=1900, height=950)  # Define o tamanho maximo da tela se acima for True
+            self.janela.minsize(width= 1000, height= 500) # Define o tamanho minimo da tela se acima for True
+            fontSt1 = tkF.Font(family='figs/dc_s.ttf', size=15)
+            self.janela.transient()
+            self.janela.focus_force()
+            self.janela.grab_set()
+            ## Chamando demais funçoes 
+            self.framesScreem(res)
+            
+
+    def framesScreem (self, resultado):
+            '''Função que define o tamnho e a posição dos frames'''
+            self.resultAvalia = resultado
+            # FRAME 1
+            self.frame1 = Frame(self.janela, bd=4 ,bg=self.c2, highlightbackground=self.c3, highlightthickness=3)
+            self.frame1.place(relx=0.01, rely=0.02, relwidth=0.97, relheight=0.77)
+            #O codigo acima define uma area responsiva para o frame 1 e o tamnho responsivo dele 
+            # FRAME 2
+            self.frame2 = Frame(self.janela, bd=4 ,bg=self.c2, highlightbackground=self.c3, highlightthickness=3)
+            self.frame2.place(relx=0.01, rely=0.81, relwidth=0.97, relheight=0.18)
+
+            ## TEXTOS
+            titulo = f' Avaliação da Nova Aposta'
+            texto1 = f' Esta Tela, avalia o jogo proposto, verificando se o mesmo em algum  momento nos sorteios passados,  esta aposta teria acertado as seis dezenas da  Mega Sena '
+
+            tex1= Label(self.frame1, text= titulo, font=('Arial', 16), fg=self.c5, bg=self.c2, justify='left', wraplength= 500)
+            tex1.place(relx=0.40, rely=0.01)
+
+            tex2= Label(self.frame1, text= texto1, font=('nimbus sans l', 13), fg=self.c5, bg=self.c2, justify='left', wraplength= 1220)
+            tex2.place(relx=0.01, rely=0.10)
+
+            text3 =  Label(self.frame1, text= self.resultAvalia, font=('nimbus sans l', 13), fg=self.c7, bg=self.c6, justify='left', wraplength= 1220)
+            text3.place(relx=0.01, rely=0.20)
+
+
+
+            
 
 ### INICIO DO MAIN PARA TESTES DESTE ARQUIVO ######
 

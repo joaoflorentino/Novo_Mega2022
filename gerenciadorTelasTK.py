@@ -65,6 +65,24 @@ def janela3():
     
     telas.Terceira()
 
+##  CHAMA A TERCEIRA JANELA DE ANALISES 
+def janela4():
+    '''Funçao que abre a janela do arquivo telas
+    para a terceira analise como botão3 do frame1'''
+     ## Cria lista de jogos
+    kx = (entrada_X.get()).split()
+    entrada_X.delete(0,END) # Depois de pegar os valores apaga o camppo Entry
+    x = []
+    for item in kx:
+        x.append(int(item))
+        x.sort()
+    print(x)
+    dadosTabela = db
+    funcao = analiseMatematica.Estatistica().avaliaSorteios(dadosTabela,x)
+
+    telas.Quarta(funcao)
+
+
 def framesScreem ():
         '''Função que define o tamnho e a posição dos frames'''
         # FRAME 1  Barra Lateral da tela Main
@@ -100,15 +118,14 @@ def framesScreem ():
         tex4 = Label(frame1, text='Criar um jogo apara avaliação', font=('nimbus sans l', 8), fg=c5, bg=c2, justify='left', wraplength= 240)
         tex4.place(relx=0.05, rely=0.60)
         # Entrada de valores
+        global entrada_X  ## Cria uma variável global para uso na funcao janela4
         entrada_X = Entry(frame1, width=28)
         entrada_X.place(relx=0.05, rely=0.68)
-        ## Cria lista de jogos
-        kx = (entrada_X.get()).split()
-        entrada_X.delete(0,END) # Depois de pegar os valores apaga o camppo Entry
-        x = []
-        for item in kx:
-            x.append(float(item))
-        print(x)
+        ### BOTAO entra Jogo
+        btn4 = Button(frame1, text ='Tela 04 ', command = janela4) 
+        btn4.place (relx = 0.05, rely= 0.74)
+
+        
         
 
            ###  =-=-=-=-=- FRAME 02 =-=-=-=-=-=-=-=
@@ -125,6 +142,7 @@ def framesScreem ():
 
         #####   TEXTO FRAME 02 
         ## LABEL 3 - Frame 1
+        global da,db
         da, db = gerando()
         tamanho = len(da)
         ###
@@ -139,7 +157,7 @@ def framesScreem ():
         frame3 = Frame(master,bd=4 ,bg=c6, highlightbackground=c3, highlightthickness=3)
         frame3.place(relx=0.27, rely=0.51, relwidth=0.72, relheight=0.48)
         table = pt = Table(frame3, dataframe=da,
-                                showtoolbar=True, showstatusbar=True)
+                                showtoolbar=True, showstatusbar=True) # Este comando gera a tabela do dataframe completo na tela
         pt.show()
         
 
@@ -153,8 +171,6 @@ def gerando():
     jogos = megaLimpezaDados.PuxaCSV().retira(completo) ## DataFrame somente com as dezenas sorteadas completas 
    
     return (completo, jogos)
-        
-        
 
 
 
