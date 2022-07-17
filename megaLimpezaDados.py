@@ -52,7 +52,7 @@ class PuxaCSV:
         return df2
     
     ### DataFrame 02
-
+    
 
 
 

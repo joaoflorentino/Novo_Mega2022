@@ -24,6 +24,9 @@ from matplotlib.figure import Figure
 
 # Imports  Meus Arquivos
 import telas
+import analiseMatematica
+import megaLimpezaDados
+
 
 master = Tk() 
 master.geometry("1000x500") 
@@ -39,27 +42,47 @@ master.title('JF - DashBoard Mega Sena - Brasil  - UFSC - POO II - 2022-1')
 master.configure(bg=c1) #Define a cor de fundo da tela inicial
 w = Canvas(master) ## Função para inserir imagens nos Frames
 
-
+##  CHAMA A PRIMEIRA JANELA DE ANALISES 
 def janela1():
     '''Funçao que abre a janela do arquivo telaUmV2
     para o botão do frame1'''
     telas.Primeira()
     return
 
+##  CHAMA A PRIMEIRA JANELA DE ANALISES 
+def janela2():
+    '''Funçao que abre a janela do arquivo telaUmV2
+    para o botão do frame1'''
+    telas.Segunda()
+    return
+
 def framesScreem ():
         '''Função que define o tamnho e a posição dos frames'''
-        # FRAME 1
+        # FRAME 1  Barra Lateral da tela Main
         frame1 = Frame(master, bd=4 ,bg=c2, highlightbackground=c3, highlightthickness=3)
         frame1.place(relx=0.01, rely=0.07, relwidth=0.25, relheight=0.92)
-        ## LABEL Frame 1
+
+
+
+        ## LABEL 1  -  Frame 1
         tex1 = Label(frame1, text ='Análise de jogos com 06 numeros sorteados \
             que premiaram com 06 acertos', font=('nimbus sans l', 8), fg=c5, bg=c2, justify='left', wraplength= 240)
         tex1.place(relx=0.01, rely=0.01)
-        ## Botões Frame 1
+        ## Botões 1  -   Frame 1
         btn = Button(frame1, text ='Tela 01 ', command = janela1) 
         btn.place (relx = 0.05, rely= 0.12)
 
-        # FRAME 2
+        ## LABEL 2  -  Frame 2
+        tex2 = Label(frame1, text ='Análise de jogos com 06 numeros sorteados \
+            que NÂO houve Ganhadores com 06 acertos', font=('nimbus sans l', 8), fg=c5, bg=c2, justify='left', wraplength= 240)
+        tex2.place(relx=0.05, rely=0.20)
+        ## Botões 1  -   Frame 1
+        btn2 = Button(frame1, text ='Tela 02 ', command = janela2) 
+        btn2.place (relx = 0.05, rely= 0.30)
+
+
+
+        # FRAME 2 Area de visualização dos dados do programa
         frame2 = Frame(master, bd=4 ,bg=c6, highlightbackground=c3, highlightthickness=3)
         frame2.place(relx=0.27, rely=0.07, relwidth=0.72, relheight=0.92)
 
@@ -69,6 +92,19 @@ def framesScreem ():
         w.image = logo1 ## Copia o arquivo da imagem gerada no logo1
         labLogo1 = Label(frame2, image= w.image) ## Label onde será colocado a imagem
         labLogo1.place(relx=0.01, rely=0.01)
+
+        '''
+        ## Textos com dados dos dataframes
+        # Buscando DataFrames
+        df0 = megaLimpezaDados.PuxaCSV.buscarCsv()
+        # DATA 1
+        df1a = megaLimpezaDados.PuxaCSV.criaListaSorteio()
+        df1 = megaLimpezaDados.PuxaCSV.faxinaData(df1a)
+        # DATA 2
+
+        '''
+        
+
 
 
 framesScreem() ## Função que gera os frames na tela Master do Tkinter

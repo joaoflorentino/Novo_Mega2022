@@ -245,7 +245,7 @@ class  Segunda():
         '''Função que posiciona o grafico dentro dos frames'''
         # Grafico FRAME 1
         graf1 = analiseMatematica.Graficos()
-        a, b = self.estGanhaVence()   # Inicia a função estatistica que cria dataframe
+        a, b = self.estPerdeu()   # Inicia a função estatistica que cria dataframe
         titulo = str(f'Frequencia dos Numeros Mais Sorteados ')
         ima = graf1.barrasMega(a, titulo)  #Gera Grafico mais sorteados  e passa titulo
         iume = Image.open('graficos/bar1.png') #Prepara arquivo pgn para resize
@@ -262,7 +262,7 @@ class  Segunda():
 
         # Grafico FRAME 2
         graf2 = analiseMatematica.Graficos()
-        a, b = self.estGanhaVence()   # Inicia a função estatistica que cria dataframe
+        a, b = self.estPerdeu()   # Inicia a função estatistica que cria dataframe
         titulo = str(f'Curva Normal dos Numeros Mais Sorteados ')
         ima = graf2.histogramaMega(a, titulo)  #Gera Grafico mais sorteados  e passa titulo
         iume = Image.open('graficos/histog01.png') #Prepara arquivo pgn para resize
@@ -279,7 +279,7 @@ class  Segunda():
 
         # Grafico FRAME 3
         graf3 = analiseMatematica.Graficos()
-        a, b = self.estGanhaVence()   # Inicia a função estatistica que cria dataframe
+        a, b = self.estPerdeu()   # Inicia a função estatistica que cria dataframe
         titulo = str(f'Frequencia dos Numeros Menos Sorteados ')
         ima = graf3.barrasMega(b, titulo)  #Gera Grafico mais sorteados  e passa titulo
         iume = Image.open('graficos/bar1.png') #Prepara arquivo pgn para resize
@@ -296,7 +296,7 @@ class  Segunda():
         
         # Grafico FRAME 4
         graf4 = analiseMatematica.Graficos()
-        a, b = self.estGanhaVence()   # Inicia a função estatistica que cria dataframe
+        a, b = self.estPerdeu()   # Inicia a função estatistica que cria dataframe
         titulo = str(f'Curva Normal dos Numeros Menos Sorteados ')
         ima = graf4.histogramaMega(b, titulo)  #Gera Grafico mais sorteados  e passa titulo
         iume = Image.open('graficos/histog01.png') #Prepara arquivo pgn para resize
@@ -337,6 +337,16 @@ class  Segunda():
         est_freq = a.estatisticoData(freq)
         self.Max = a.nMaiores(freq,15) ##  Esse valor de 20 é que define o tamanho da amostra mais sorteados
         self.Min = a.nMenores(freq,15) ## mesmo acima menos sorteados 
+        return (self.Max, self.Min)
+
+    def  estPerdeu(self):
+        ka = analiseMatematica.Estatistica()
+        ganhadores = ka.dataframePerdedores()
+        freq = ka.FreqNumSorteados(ganhadores)
+        freq.sort_values(['Frequencia'], ascending=True)
+        est_freq = ka.estatisticoData(freq)
+        self.Max = ka.nMaiores(freq,8) ##  Esse valor de 20 é que define o tamanho da amostra mais sorteados
+        self.Min = ka.nMenores(freq,8) ## mesmo acima menos sorteados 
         return (self.Max, self.Min)
 
 ### INICIO DO MAIN PARA TESTES DESTE ARQUIVO ######
