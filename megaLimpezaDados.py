@@ -70,6 +70,12 @@ class PuxaCSV:
         self.df2 = self.df1.drop(['Data', 'Ganhador', 'premio'], axis=1) 
         return self.df2
 
+    def retira(self, dtf):
+        "Funcao Retira colunas"
+        self.d = dtf
+        self.resultado = self.d.drop(['Data', 'Mega', 'Quina', 'Quadra', 'Cidade'], axis = 1)
+        return self.resultado
+
     def criaArquivosDeEstudos(self):
         self.df1.to_csv('data/organizadoDf1.csv')
         self.df2.to_csv('data/concursosDezenas.csv')

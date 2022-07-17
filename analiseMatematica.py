@@ -83,6 +83,28 @@ class Estatistica():
         Menores = self.dataFamePand.nsmallest(self.nval, ['Frequencia'])
         return (Menores)
 
+    def avaliaSorteios(self, dfm, lst):
+        ''' Função que compara linha a linha de um dataframe
+        para verificar se há iguais - Ja sorteado'''
+        self.dataframe = dfm ## Recebe um data frame para analise
+        self.lista = lst  ## recebe uma lista de 06 numeros para comparação
+        ### A 1
+        i = 0
+        self.a = self.dataframe.loc[self.dataframe['dezena1'] == self.lista[i]] 
+        self.b= self.a.loc[self.a['dezena2'] == self.lista[i+1]]
+        self.c = self.b.loc[self.b['dezena3'] == self.lista[i+2]]
+        self.d = self.c.loc[self.c['dezena4'] == self.lista[i+3]]
+        self.e = self.d.loc[self.d['dezena5'] == self.lista[i+4]]
+        self.f = self.e.loc[self.e['dezena6'] == self.lista[i+5]]
+        
+        if  len(self.f) == 0:
+            resultado = f'SEM acertos'
+        else:
+            k = len(self.f)
+            resultado = f'Já ocorreu este Jogo {k}  vez (s)'
+        return resultado
+
+        
 
 ##  Outa Classe  Graficos
 class Graficos():
@@ -124,15 +146,27 @@ class Graficos():
         fih = plt.savefig("graficos/histog01.png")
         return (fih)
 
+
 #####  MAIN  - Testes ######
 if  __name__ == '__main__':
     print(f'************Inicio dos testes deste arquivo**************')
     teste1 = Estatistica()
+# Gerar Data frame completo filtrado
+
+    dtf0 = teste1.df0 # data frame completo 
+    dtf1 = megaLimpezaDados.PuxaCSV().retira(dtf0) ## DataFrame somente com as dezenas sorteadas completas 
+    print(dtf1)
+
+    
+
+    '''
     ganhadores = teste1.dataframeVencedores()
     print(ganhadores)
 
-    #valores1 = ganhadores.value_counts(ganhadores["dezena1"])
-    #print(valores1)
+    valores1 = ganhadores.value_counts(ganhadores["dezena1"])
+    print(valores1)
+
+   
     freq = teste1.FreqNumSorteados(ganhadores)
     freq.sort_values(['Frequencia'], ascending=True)
     print(freq)
@@ -156,5 +190,13 @@ if  __name__ == '__main__':
     
     #perdedores = teste1.dataframePerdedores()
     #print(perdedores)
+
+    '''
+    ## Teste função Avalia sorteios
+   # apst = [9,23,25,37,39,55]
+    apst = [9,23,32,35,46,57]
+    sera = teste1.avaliaSorteios(dtf1 ,apst)
+    print(f'Resultado para esta aposta')
+    print(sera)
     print(f'======== F I M  dos TESTES =============')
     print()

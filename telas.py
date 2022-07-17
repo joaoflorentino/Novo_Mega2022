@@ -341,13 +341,67 @@ class  Segunda():
 
     def  estPerdeu(self):
         ka = analiseMatematica.Estatistica()
-        ganhadores = ka.dataframePerdedores()
-        freq = ka.FreqNumSorteados(ganhadores)
+        perdedores = ka.dataframePerdedores()
+        freq = ka.FreqNumSorteados(perdedores)
         freq.sort_values(['Frequencia'], ascending=True)
         est_freq = ka.estatisticoData(freq)
         self.Max = ka.nMaiores(freq,8) ##  Esse valor de 20 é que define o tamanho da amostra mais sorteados
         self.Min = ka.nMenores(freq,8) ## mesmo acima menos sorteados 
         return (self.Max, self.Min)
+
+## Terceira tela
+
+class Terceira():
+    def __init__(self) -> None:
+            
+            self.c1 = '#0d2754'  #Cor do fundo de tela geral
+            self.c2 = '#0a0e2e' #Cor de fundo do  Frame
+            self.c3 = '#182480' #Cor da borda do Frame
+            self.c4 ='#717ff5'  #Cor do fundo de imagem
+            self.c5 ='#f5f5f7'  #Cor dos textos
+            # Demais funcoes de tela
+            self.janela = Toplevel()
+            self.janela.title('JF - DashBoard Mega Sena - Nova Aposta e Sorteios - Tela 03 ')
+            self.janela.configure(bg=self.c1)
+            self.janela.geometry('1350x750')
+            self.janela.resizable(True, True)  # Permite a janela ser aumentada ou diminuida tanto em x quanto em  y
+            self.janela.maxsize(width=1900, height=950)  # Define o tamanho maximo da tela se acima for True
+            self.janela.minsize(width= 1000, height= 500) # Define o tamanho minimo da tela se acima for True
+            fontSt1 = tkF.Font(family='figs/dc_s.ttf', size=15)
+            self.janela.transient()
+            self.janela.focus_force()
+            self.janela.grab_set()
+            ## Chamando demais funçoes 
+            self.framesScreem()
+            self.screemGrafico()
+            self.poeLogo()
+            self.janelaUsuario()
+
+    def framesScreem (self):
+            '''Função que define o tamnho e a posição dos frames'''
+            # FRAME 1
+            self.frame1 = Frame(self.janela, bd=4 ,bg=self.c2, highlightbackground=self.c3, highlightthickness=3)
+            self.frame1.place(relx=0.01, rely=0.02, relwidth=0.33, relheight=0.47)
+            #O codigo acima define uma area responsiva para o frame 1 e o tamnho responsivo dele 
+            # FRAME 2
+            self.frame2 = Frame(self.janela, bd=4 ,bg=self.c2, highlightbackground=self.c3, highlightthickness=3)
+            self.frame2.place(relx=0.35, rely=0.02, relwidth=0.33, relheight=0.47)
+            #O codigo acima define uma area responsiva para o frame 1 e o tamnho responsivo dele 
+            # FRAME 3
+            self.frame3 = Frame(self.janela, bd=4 ,bg=self.c2, highlightbackground=self.c3, highlightthickness=3)
+            self.frame3.place(relx=0.01, rely=0.51, relwidth=0.33, relheight=0.47)
+            #O codigo acima define uma area responsiva para o frame 1 e o tamnho responsivo dele 
+            # FRAME 4
+            self.frame4 = Frame(self.janela, bd=4 ,bg=self.c2, highlightbackground=self.c3, highlightthickness=3)
+            self.frame4.place(relx=0.35, rely=0.51, relwidth=0.33, relheight=0.47)
+            #O codigo acima define uma area responsiva para o frame 1 e o tamnho responsivo dele 
+            # FRAME 5
+            self.frame5 = Frame(self.janela, bd=4 ,bg=self.c2, highlightbackground=self.c3, highlightthickness=3)
+            self.frame5.place(relx=0.69, rely=0.02, relwidth=0.30, relheight=0.96)
+            #O codigo acima define uma area responsiva para o frame 1 e o tamnho responsivo dele 
+
+
+
 
 ### INICIO DO MAIN PARA TESTES DESTE ARQUIVO ######
 
