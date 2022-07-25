@@ -91,18 +91,23 @@ class Estatistica():
         ### A 1
         i = 0
         self.a = self.dataframe.loc[self.dataframe['dezena1'] == self.lista[i]] 
+        k = len(self.a)
         self.b= self.a.loc[self.a['dezena2'] == self.lista[i+1]]
+        l = len(self.b)
         self.c = self.b.loc[self.b['dezena3'] == self.lista[i+2]]
+        m = len(self.c)
         self.d = self.c.loc[self.c['dezena4'] == self.lista[i+3]]
+        n = len(self.d)
         self.e = self.d.loc[self.d['dezena5'] == self.lista[i+4]]
+        o = len(self.e)
         self.f = self.e.loc[self.e['dezena6'] == self.lista[i+5]]
+        p = len(self.f)
         
-        if  len(self.f) == 0:
+        if  p == 0:
             resultado = f'SEM acertos'
         else:
-            k = len(self.f)
-            resultado = f'Já ocorreu este Jogo {k}  vez (s)'
-        return resultado
+            resultado = f'Já ocorreu este Jogo {p}  vez (s)'
+        return (resultado, k, l, m, n, o,p)
 
         
 

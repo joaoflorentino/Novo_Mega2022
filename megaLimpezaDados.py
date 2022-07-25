@@ -53,9 +53,6 @@ class PuxaCSV:
     
     ### DataFrame 02
     
-
-
-
     def faxinaData(self,df0):
         '''Funçao cria novo dataframe com elininação dos dados
         NdN contidos no frame inicial '''
@@ -63,12 +60,6 @@ class PuxaCSV:
         self.df = self.dataFrame.sort_values(['Concurso'], ascending=True)
         self.df.fillna(value='',  inplace=True)  #Retira todos NaN do dataframe
         return self.df
-
-    def criaListaSorteio(self):
-        '''Funcao que elimina algumas colunas deixando as dezenas sorteadas
-        e o numero do concurso '''
-        self.df2 = self.df1.drop(['Data', 'Ganhador', 'premio'], axis=1) 
-        return self.df2
 
     def retira(self, dtf):
         "Funcao Retira colunas"

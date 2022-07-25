@@ -78,9 +78,9 @@ def janela4():
         x.sort()
     print(x)
     dadosTabela = db
-    funcao = analiseMatematica.Estatistica().avaliaSorteios(dadosTabela,x)
+    funcao, a1, a2, a3, a4, a5, a6  = analiseMatematica.Estatistica().avaliaSorteios(dadosTabela,x)
 
-    telas.Quarta(funcao)
+    telas.Quarta(x, funcao, a1, a2, a3, a4, a5, a6)
 
 
 def framesScreem ():
@@ -125,8 +125,6 @@ def framesScreem ():
         btn4 = Button(frame1, text ='Tela 04 ', command = janela4) 
         btn4.place (relx = 0.05, rely= 0.74)
 
-        
-        
 
            ###  =-=-=-=-=- FRAME 02 =-=-=-=-=-=-=-=
         # FRAME 2 Area de visualização dos dados do programa

@@ -188,8 +188,8 @@ class  Primeira():
         freq = a.FreqNumSorteados(ganhadores)
         freq.sort_values(['Frequencia'], ascending=True)
         est_freq = a.estatisticoData(freq)
-        self.Max = a.nMaiores(freq,15) ##  Esse valor de 20 é que define o tamanho da amostra mais sorteados
-        self.Min = a.nMenores(freq,15) ## mesmo acima menos sorteados 
+        self.Max = a.nMaiores(freq,10) ##  Esse valor de 20 é que define o tamanho da amostra mais sorteados
+        self.Min = a.nMenores(freq,10) ## mesmo acima menos sorteados 
         return (self.Max, self.Min)
 
 ## Segunda tela
@@ -405,7 +405,7 @@ class Terceira():
 
 ### Quarta tela
 class Quarta():
-    def __init__(self, res) -> None:
+    def __init__(self, lst, res, a, b, c, d, e, f) -> None:
             
             self.c1 = '#0d2754'  #Cor do fundo de tela geral
             self.c2 = '#0a0e2e' #Cor de fundo do  Frame
@@ -414,7 +414,7 @@ class Quarta():
             self.c5 ='#f5f5f7'  #Cor dos textos
             self.c6 = '#eb3175' # Cor para  fundo respostas Rosado 
             self.c7 = '#f5e35b' # Cor texto resposta Amarelado
-
+            self.c8 = '#abf5d0' # Cor fundo texto respostas em verde
 
             # Demais funcoes de tela
             self.janela = Toplevel()
@@ -429,12 +429,20 @@ class Quarta():
             self.janela.focus_force()
             self.janela.grab_set()
             ## Chamando demais funçoes 
-            self.framesScreem(res)
+            self.framesScreem(lst, res, a,b,c,d,e,f)
             
-
-    def framesScreem (self, resultado):
+            
+    def framesScreem (self, lista, resultado, a,b, c, d, e, f):
             '''Função que define o tamnho e a posição dos frames'''
+            self.jogoProposto = lista
             self.resultAvalia = resultado
+            self.umNumero = a
+            self.doisNumeros = b
+            self.tresNumeros = c
+            self.quatroNumeros = d
+            self.cincoNumeros = e
+            self.seisNumeros = f
+
             # FRAME 1
             self.frame1 = Frame(self.janela, bd=4 ,bg=self.c2, highlightbackground=self.c3, highlightthickness=3)
             self.frame1.place(relx=0.01, rely=0.02, relwidth=0.97, relheight=0.77)
@@ -456,6 +464,33 @@ class Quarta():
             text3 =  Label(self.frame1, text= self.resultAvalia, font=('nimbus sans l', 13), fg=self.c7, bg=self.c6, justify='left', wraplength= 1220)
             text3.place(relx=0.01, rely=0.20)
 
+            texto4 = f'Com a APOSTA PROPOSTA : '
+            tex4= Label(self.frame1, text= texto4, font=('Arial', 15), fg=self.c5, bg=self.c2, justify='left', wraplength= 500)
+            tex4.place(relx=0.01, rely=0.30)
+
+            texto4b = f'Jogo -->>   {self.jogoProposto} '
+            tex4b= Label(self.frame1, text= texto4b, font=('Arial', 15), fg=self.c5, bg=self.c2, justify='left', wraplength= 500)
+            tex4b.place(relx=0.01, rely=0.35)
+
+            texto5 = f'* 1 *Iniciando com o primeiro numero teriamos  {self.umNumero}  Jogos '
+            text5 =  Label(self.frame1, text= texto5, font=('nimbus sans l', 14), fg=self.c1, bg=self.c8, justify='left', wraplength= 1220)
+            text5.place(relx=0.01, rely=0.40)
+
+            texto6 = f'* 2 *Iniciando com o primeiro  e o segundo numero teriamos  {self.doisNumeros}  Jogos '
+            text6 =  Label(self.frame1, text= texto6, font=('nimbus sans l', 14), fg=self.c1, bg=self.c8, justify='left', wraplength= 1220)
+            text6.place(relx=0.01, rely=0.45)
+
+            texto7 = f'* 3 *Iniciando com o primeiro, o segundo e o terceiro numero teriamos  {self.tresNumeros}  Jogos '
+            text7 =  Label(self.frame1, text= texto7, font=('nimbus sans l', 14), fg=self.c1, bg=self.c8, justify='left', wraplength= 1220)
+            text7.place(relx=0.01, rely=0.50)
+
+            texto8 = f'* 4 *Iniciando com o primeiro, o segundo, o terceiro e o quarto  numero teriamos  {self.quatroNumeros}  Jogos '
+            text8 =  Label(self.frame1, text= texto8, font=('nimbus sans l', 14), fg=self.c1, bg=self.c8, justify='left', wraplength= 1220)
+            text8.place(relx=0.01, rely=0.55)
+
+            texto9 = f'* 5 *Iniciando com o primeiro, o segundo, o terceiro, o quarto  e o quinto numero teriamos  {self.cincoNumeros}  Jogos '
+            text9 =  Label(self.frame1, text= texto9, font=('nimbus sans l', 14), fg=self.c1, bg=self.c8, justify='left', wraplength= 1220)
+            text9.place(relx=0.01, rely=0.60)
 
 
             
