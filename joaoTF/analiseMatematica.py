@@ -112,22 +112,14 @@ class Estatistica():
 
     def paresImpares(self,dtf):
         '''Funcao que avalia quantos pares e impares no data frame '''
-        #self.data = self.FreqNumSorteados(dtf)
-        self.data = dtf
+        self.data = self.FreqNumSorteados(dtf)
+        g = len(self.data)
         pares = 0
         impares = 0 
-        for i in range(1, 60, 2):
-            pares = pares + self.data.iloc[i]
-        for j in range(0, 60, 2):
-            impares = impares + self.data.iloc[j]
-        pares = pares + self.data.iloc[59]
-        print(f'Pares = {pares[0]}' )
-        print(f'Impares = {impares[0]}')
-        print(f'Soma dos numeros Sorteadors = {pares[0] + impares[0]}')
-        qtpar = pares[0]
-        qtimpar = impares[0]
+    
 
-        return (qtpar, qtimpar)
+
+        return self.data
 
         
 
@@ -170,24 +162,6 @@ class Graficos():
         #plt.show()
         fih = plt.savefig("graficos/histog01.png")
         return (fih)
-
-    def pizzaParImpar(self, qtP, qtI):
-        '''Funcão para grafico de pizza par e impar'''
-        self.qtPar = qtP
-        self.qtImpar = qtI
-        cores = ['#bf777f', '#91b597']
-        nomes = ['Pares', 'Impares']
-        valores = [self.qtPar, self.qtImpar]
-
-        fig, ax =  plt.subplots(figsize=(8,8))
-        explode = (0.1, 0)
-
-        ax.pie(valores, labels=nomes, autopct='%.1f%%', shadow= True, explode=explode, colors=cores, startangle=60, radius=1.1)
-        ax.set_title('Pares e Impares nos sorteios' , fontsize = 25)
-        fit = plt.savefig("graficos/pizzaPI.png")
-
-
-
 
 
 #####  MAIN  - Testes ######
