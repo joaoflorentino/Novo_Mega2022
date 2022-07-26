@@ -397,35 +397,20 @@ class Terceira():
             texto1 = f' Dados estatisticos da frequencia de sorteio dos números:'
 
             tex1= Label(self.frame1, text= titulo, font=('Arial', 16), fg=self.c5, bg=self.c2, justify='left', wraplength= 500)
-            tex1.place(relx=0.30, rely=0.01)
+            tex1.place(relx=0.40, rely=0.01)
 
             tex2= Label(self.frame1, text= texto1, font=('nimbus sans l', 13), fg=self.c5, bg=self.c2, justify='left', wraplength= 1220)
             tex2.place(relx=0.01, rely=0.10)
 
-            #Tabela com conteudo do describe Pandas
-            visao = dtf.describe().T
+            dtaframe = dtf
+            #visao = dtaframe.style.background_gradient(cmap = 'YlOrRd')
+            visao = dtaframe.describe().T
+            
             frame3 = Frame(self.frame1,bd=4 ,bg=self.c1, highlightbackground=self.c3, highlightthickness=3)
             frame3.place(relx=0.01, rely=0.15, relwidth=0.55, relheight=0.14)
             table = pt = Table(frame3, dataframe=visao,
-                                showtoolbar=False, showstatusbar=False) # Este comando gera a tabela do dataframe Describe
+                                showtoolbar=False, showstatusbar=False) # Este comando gera a tabela do dataframe completo na tela
             pt.show()
-            ##  FIM tabela describe
-            ## GRAFICO DE PIZZA ###s
-            qPar, qImpar = analiseMatematica.Estatistica().paresImpares(dtf)
-            ima = analiseMatematica.Graficos().pizzaParImpar(qPar,qImpar)  #Gera Grafico Pizza
-            iume = Image.open('graficos/pizzaPI.png') #Prepara arquivo pgn para resize
-            wi = iume.width //  2 # Reduz imagem em 3 vezes(Somente numeros inteiros)
-            h = iume.height //  2 # Reduz imagem em 3 vezes(Somente numeros inteiros)
-            res = iume.resize((wi,h)) #Chama a função de redimensionamento
-            res.save('graficos/newPie.png') # Salva nova imagem no arquivo
-            w = Canvas(self.janela) # Gera imagem no canvas para inserção no frame
-            gra01= PhotoImage(file= 'graficos/newPie.png') # gera arquivo no Photoimage
-            w.create_image(0,0, image=gra01) # chama imagem no canvas
-            w.image = gra01 # gera o w imagem para inserção no Label
-            grafico = Label(self.frame1, image=w.image) #Label que vai receber imagem acima 
-            grafico.place(relx=0.01, rely=0.29, relwidth=0.29, relheight=0.61) #Posicionamento do Label
-        
-
 
 
 

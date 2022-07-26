@@ -62,9 +62,8 @@ def janela2():
 def janela3():
     '''Funçao que abre a janela do arquivo telas
     para a terceira analise como botão3 do frame1'''
-    freque = analiseMatematica.Estatistica().FreqNumSorteados(db)
+    freque = analiseMatematica.Estatistica().paresImpares(db)
     telas.Terceira().framesScreem(freque)
-    
 
 ##  CHAMA A TERCEIRA JANELA DE ANALISES 
 def janela4():
