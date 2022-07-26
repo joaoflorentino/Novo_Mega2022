@@ -182,7 +182,11 @@ class Graficos():
         fig, ax =  plt.subplots(figsize=(8,8))
         explode = (0.1, 0)
 
+<<<<<<< HEAD
         ax.pie(valores, labels=nomes, autopct='%.1f%%', shadow= True, explode=explode, colors=cores, startangle=60, radius=1.1)
+=======
+        ax.pie(valores, labels=nomes, autopct='%.1f%%', shadow= True, explode=explode, colors=cores, startangle=60)
+>>>>>>> 69a52c4d6d36d7bc780844d17c6654c85922ce26
         ax.set_title('Pares e Impares nos sorteios' , fontsize = 25)
         fit = plt.savefig("graficos/pizzaPI.png")
 

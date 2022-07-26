@@ -13,5 +13,12 @@ figs/
 
 # Ignorar a pasta Qt5
 Qt5/
+<<<<<<< HEAD
 # ignorar os arquivos .zip
 *.zip
+=======
+
+#ignorar arquivos .zip
+*.zip
+
+>>>>>>> 69a52c4d6d36d7bc780844d17c6654c85922ce26
