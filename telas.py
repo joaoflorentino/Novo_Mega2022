@@ -423,11 +423,7 @@ class Terceira():
             w.create_image(0,0, image=gra01) # chama imagem no canvas
             w.image = gra01 # gera o w imagem para inserção no Label
             grafico = Label(self.frame1, image=w.image) #Label que vai receber imagem acima 
-<<<<<<< HEAD
             grafico.place(relx=0.01, rely=0.29, relwidth=0.29, relheight=0.62) #Posicionamento do Label
-=======
-            grafico.place(relx=0.01, rely=0.29, relwidth=0.29, relheight=0.61) #Posicionamento do Label
->>>>>>> 69a52c4d6d36d7bc780844d17c6654c85922ce26
         
 
 
