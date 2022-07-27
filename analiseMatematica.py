@@ -178,17 +178,11 @@ class Graficos():
         cores = ['#bf777f', '#91b597']
         nomes = ['Pares', 'Impares']
         valores = [self.qtPar, self.qtImpar]
-
         fig, ax =  plt.subplots(figsize=(8,8))
         explode = (0.1, 0)
-
-        ax.pie(valores, labels=nomes, autopct='%.1f%%', shadow= True, explode=explode, colors=cores, startangle=60, radius=1.1)
+        ax.pie(valores, labels=nomes, autopct='%.1f%%', shadow= True, explode=explode, colors=cores, startangle=60, radius=1.1, textprops={'fontsize': 22})
         ax.set_title('Pares e Impares nos sorteios' , fontsize = 25)
         fit = plt.savefig("graficos/pizzaPI.png")
-
-
-
-
 
 #####  MAIN  - Testes ######
 if  __name__ == '__main__':
