@@ -489,34 +489,39 @@ class Quarta():
 
             text3 =  Label(self.frame1, text= self.resultAvalia, font=('nimbus sans l', 13), fg=self.c7, bg=self.c6, justify='left', wraplength= 1220)
             text3.place(relx=0.01, rely=0.20)
+                ## Respostas da avaliação dos jogos
+
+            ## FRAME PARA RESPOSTAS
+            self.frame1b = Frame(self.frame1, bd=4 ,bg=self.c8, highlightbackground=self.c3, highlightthickness=3)
+            self.frame1b.place(relx=0.01, rely=0.40, relwidth=0.70, relheight=0.30)
 
             texto4 = f'Com a APOSTA PROPOSTA : '
             tex4= Label(self.frame1, text= texto4, font=('Arial', 15), fg=self.c5, bg=self.c2, justify='left', wraplength= 500)
-            tex4.place(relx=0.01, rely=0.30)
+            tex4.place(relx=0.02, rely=0.30)
 
             texto4b = f'Jogo -->>   {self.jogoProposto} '
             tex4b= Label(self.frame1, text= texto4b, font=('Arial', 15), fg=self.c5, bg=self.c2, justify='left', wraplength= 500)
-            tex4b.place(relx=0.01, rely=0.35)
+            tex4b.place(relx=0.02, rely=0.35)
 
             texto5 = f'* 1 *Iniciando com o primeiro numero teriamos  {self.umNumero}  Jogos '
             text5 =  Label(self.frame1, text= texto5, font=('nimbus sans l', 14), fg=self.c1, bg=self.c8, justify='left', wraplength= 1220)
-            text5.place(relx=0.01, rely=0.40)
+            text5.place(relx=0.02, rely=0.42)
 
             texto6 = f'* 2 *Iniciando com o primeiro  e o segundo numero teriamos  {self.doisNumeros}  Jogos '
             text6 =  Label(self.frame1, text= texto6, font=('nimbus sans l', 14), fg=self.c1, bg=self.c8, justify='left', wraplength= 1220)
-            text6.place(relx=0.01, rely=0.45)
+            text6.place(relx=0.02, rely=0.47)
 
             texto7 = f'* 3 *Iniciando com o primeiro, o segundo e o terceiro numero teriamos  {self.tresNumeros}  Jogos '
             text7 =  Label(self.frame1, text= texto7, font=('nimbus sans l', 14), fg=self.c1, bg=self.c8, justify='left', wraplength= 1220)
-            text7.place(relx=0.01, rely=0.50)
+            text7.place(relx=0.02, rely=0.52)
 
             texto8 = f'* 4 *Iniciando com o primeiro, o segundo, o terceiro e o quarto  numero teriamos  {self.quatroNumeros}  Jogos '
             text8 =  Label(self.frame1, text= texto8, font=('nimbus sans l', 14), fg=self.c1, bg=self.c8, justify='left', wraplength= 1220)
-            text8.place(relx=0.01, rely=0.55)
+            text8.place(relx=0.02, rely=0.57)
 
             texto9 = f'* 5 *Iniciando com o primeiro, o segundo, o terceiro, o quarto  e o quinto numero teriamos  {self.cincoNumeros}  Jogos '
             text9 =  Label(self.frame1, text= texto9, font=('nimbus sans l', 14), fg=self.c1, bg=self.c8, justify='left', wraplength= 1220)
-            text9.place(relx=0.01, rely=0.60)
+            text9.place(relx=0.02, rely=0.62)
 
 ### Quinta tela
 class Quinta():
@@ -579,6 +584,12 @@ class Quinta():
             text3 =  Label(self.frame1, text= self.resultAvalia, font=('nimbus sans l', 13), fg=self.c7, bg=self.c6, justify='left', wraplength= 1220)
             text3.place(relx=0.01, rely=0.20)
 
+            ## FRAME PARA RESPOSTAS 
+
+             ## FRAME PARA RESPOSTAS
+            self.frame1b = Frame(self.frame1, bd=4 ,bg=self.c8, highlightbackground=self.c3, highlightthickness=3)
+            self.frame1b.place(relx=0.01, rely=0.40, relwidth=0.70, relheight=0.30)
+
             texto4 = f'Com a APOSTA PROPOSTA : '
             tex4= Label(self.frame1, text= texto4, font=('Arial', 15), fg=self.c5, bg=self.c2, justify='left', wraplength= 500)
             tex4.place(relx=0.01, rely=0.30)
@@ -589,23 +600,23 @@ class Quinta():
 
             texto5 = f'* 1 *Iniciando com o primeiro numero teriamos  {self.umNumero}  Jogos '
             text5 =  Label(self.frame1, text= texto5, font=('nimbus sans l', 14), fg=self.c1, bg=self.c8, justify='left', wraplength= 1220)
-            text5.place(relx=0.01, rely=0.40)
+            text5.place(relx=0.02, rely=0.42)
 
             texto6 = f'* 2 *Iniciando com o primeiro  e o segundo numero teriamos  {self.doisNumeros}  Jogos '
             text6 =  Label(self.frame1, text= texto6, font=('nimbus sans l', 14), fg=self.c1, bg=self.c8, justify='left', wraplength= 1220)
-            text6.place(relx=0.01, rely=0.45)
+            text6.place(relx=0.02, rely=0.47)
 
             texto7 = f'* 3 *Iniciando com o primeiro, o segundo e o terceiro numero teriamos  {self.tresNumeros}  Jogos '
             text7 =  Label(self.frame1, text= texto7, font=('nimbus sans l', 14), fg=self.c1, bg=self.c8, justify='left', wraplength= 1220)
-            text7.place(relx=0.01, rely=0.50)
+            text7.place(relx=0.02, rely=0.52)
 
             texto8 = f'* 4 *Iniciando com o primeiro, o segundo, o terceiro e o quarto  numero teriamos  {self.quatroNumeros}  Jogos '
             text8 =  Label(self.frame1, text= texto8, font=('nimbus sans l', 14), fg=self.c1, bg=self.c8, justify='left', wraplength= 1220)
-            text8.place(relx=0.01, rely=0.55)
+            text8.place(relx=0.02, rely=0.57)
 
             texto9 = f'* 5 *Iniciando com o primeiro, o segundo, o terceiro, o quarto  e o quinto numero teriamos  {self.cincoNumeros}  Jogos '
             text9 =  Label(self.frame1, text= texto9, font=('nimbus sans l', 14), fg=self.c1, bg=self.c8, justify='left', wraplength= 1220)
-            text9.place(relx=0.01, rely=0.60)
+            text9.place(relx=0.02, rely=0.62)
     
 
 
