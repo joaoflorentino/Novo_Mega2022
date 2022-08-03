@@ -160,7 +160,7 @@ def framesScreem ():
         entrada_X2 = Entry(frame1, width=15)
         entrada_X2.place(relx=0.05, rely=0.60)
         ### BOTAO entra tamanho amostra
-        btn4 = Button(frame1, text ='Tela 04 ', command = janela4b) 
+        btn4 = Button(frame1, text ='Tela 05 ', command = janela4b) 
         btn4.place (relx = 0.55, rely= 0.59)
 
         ###  =-=-=-=-=- FRAME 02 =-=-=-=-=-=-=-=
